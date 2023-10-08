@@ -1,0 +1,36 @@
+{
+  "name": "@sekhyuni/react-design-system",
+  "version": "1.0.1",
+  "description": "react design system",
+  "main": "./dist/index.js",
+  "module": "./dist/index.es.js",
+  "browser": "./dist/index.umd.js",
+  "types": "./dist/index.d.ts",
+  "repository": "https://github.com/sekhyuni/react-design-system.git",
+  "author": "Seokhyun (Asher) Kim",
+  "license": "ISC",
+  "private": false,
+  "scripts": {
+    "build": "rollup -c",
+    "lint:check": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.5",
+    "@rollup/plugin-node-resolve": "^15.2.2",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/react": "^18.2.25",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "prettier": "^3.0.3",
+    "react": "^18.2.0",
+    "rollup": "^4.0.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.2.2"
+  }
+}
