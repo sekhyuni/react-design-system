@@ -5,15 +5,18 @@
  * @since 2023.10.08
  */
 
-const babel = require('@rollup/plugin-babel');
-const commonjs = require('@rollup/plugin-commonjs');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const typescript = require('@rollup/plugin-typescript');
-const peerDepsExternal = require('rollup-plugin-peer-deps-external');
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+import image from '@rollup/plugin-image';
+import alias from '@rollup/plugin-alias';
 
 const extensions = ['js', 'jsx', 'ts', 'tsx', 'mjs'];
 
-const pkg = require('./package.json');
+import pkg from './package.json' assert { type: 'json' };
 
 const config = [
   {
@@ -34,6 +37,10 @@ const config = [
         name: pkg.name,
         file: pkg.browser,
         format: 'umd',
+        globals: {
+          react: 'React',
+          'style-inject': 'styleInject',
+        },
       },
     ],
     plugins: [
@@ -46,8 +53,19 @@ const config = [
       commonjs({ include: 'node_modules/**' }),
       peerDepsExternal(),
       typescript({ tsconfig: './tsconfig.json' }),
+      postcss({
+        extract: false,
+        inject: (cssVariableName) =>
+          `import styleInject from 'style-inject';\nstyleInject(${cssVariableName});`,
+        modules: true,
+        sourceMap: false,
+      }),
+      image(),
+      alias({
+        entries: [{ find: '@/assets', replacement: 'src/assets' }],
+      }),
     ],
   },
 ];
 
-module.exports = config;
+export default config;

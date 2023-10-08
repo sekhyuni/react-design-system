@@ -1,0 +1,67 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.container-arrow-left-small {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 10px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.container-arrow-left-small:disabled {
+  cursor: default;
+}
+
+.page-number {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+
+  padding: 0;
+  border: 0;
+  margin-left: 15px;
+  color: var(--warm-gray-04);
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.page-number:first-of-type {
+  margin-left: 0;
+}
+
+.container-arrow-right-small {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 10px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  margin-left: 15px;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.arrow-right-small:disabled {
+  cursor: default;
+}
+
+.active-color {
+  font-weight: 700;
+  color: var(--warm-gray-02);
+}
+
+/* 모바일 */
+@media only screen and (max-width: 767px) {
+  .pagination {
+    margin-top: 24px;
+  }
+}

@@ -2,6 +2,7 @@
   "name": "@sekhyuni/react-design-system",
   "version": "1.0.3",
   "description": "react design system",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.es.js",
   "browser": "./dist/index.umd.js",
@@ -12,13 +13,15 @@
   "private": false,
   "scripts": {
     "build": "rollup -c",
-    "lint:check": "eslint . --max-warnings=0",
-    "lint:fix": "eslint . --fix"
+    "lint:check": "eslint 'src/**/*.{js,jsx,ts,tsx}' --max-warnings=0",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
+    "@rollup/plugin-alias": "^5.0.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.5",
+    "@rollup/plugin-image": "^3.0.3",
     "@rollup/plugin-node-resolve": "^15.2.2",
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/react": "^18.2.25",
@@ -28,10 +31,12 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "rollup": "^4.0.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.2.2"
   }
 }
