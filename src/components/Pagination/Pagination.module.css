@@ -58,10 +58,3 @@
   font-weight: 700;
   color: var(--warm-gray-02);
 }
-
-/* 모바일 */
-@media only screen and (max-width: 767px) {
-  .pagination {
-    margin-top: 24px;
-  }
-}
