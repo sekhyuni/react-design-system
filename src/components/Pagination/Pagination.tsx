@@ -45,13 +45,7 @@ const Pagination = ({
             setPage(page - 1);
           }}
         >
-          <div>left 이미지</div>
-          <img
-            src={ArrowLeftSmall}
-            alt='ArrowLeftSmall'
-            style={{ objectFit: 'contain' }}
-            sizes='(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw'
-          />
+          <img src={ArrowLeftSmall} alt='ArrowLeftSmall' />
         </button>
       )}
       {Array.from({ length: countOfAllPages }, (_, idx) => {
@@ -84,12 +78,7 @@ const Pagination = ({
             setPage(page + 1);
           }}
         >
-          <img
-            src={ArrowRightSmall}
-            alt='ArrowRightSmall'
-            style={{ objectFit: 'contain' }}
-            sizes='(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw'
-          />
+          <img src={ArrowRightSmall} alt='ArrowRightSmall' />
         </button>
       )}
     </nav>
