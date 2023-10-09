@@ -5,65 +5,75 @@
  * @since 2023.10.08
  */
 
+import alias from '@rollup/plugin-alias';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
+import image from '@rollup/plugin-image';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
+import path from 'path';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import image from '@rollup/plugin-image';
-import alias from '@rollup/plugin-alias';
-
-const extensions = ['js', 'jsx', 'ts', 'tsx', 'mjs'];
 
 import pkg from './package.json' assert { type: 'json' };
 
+const extensions = ['js', 'jsx', 'ts', 'tsx'];
+const globals = {
+  react: 'React',
+  'react-dom': 'ReactDOM',
+};
+const external = ['react', 'react-dom'];
+
 const config = [
   {
-    external: [/node_modules/],
     input: './src/index.ts',
     output: [
       {
-        dir: './dist',
         format: 'cjs',
+        globals,
+        dir: 'dist',
         preserveModules: true,
         preserveModulesRoot: 'src',
       },
       {
         file: pkg.module,
         format: 'es',
+        globals,
       },
       {
-        name: pkg.name,
         file: pkg.browser,
         format: 'umd',
-        globals: {
-          react: 'React',
-          'style-inject': 'styleInject',
-        },
+        globals,
+        name: pkg.name,
       },
     ],
+    external,
     plugins: [
+      alias({
+        entries: [{ find: '@', replacement: path.resolve('./src') }],
+      }),
+
       nodeResolve({ extensions }),
+
       babel({
         exclude: 'node_modules/**',
         extensions,
         include: ['src/**/*'],
       }),
+
       commonjs({ include: 'node_modules/**' }),
+
       peerDepsExternal(),
+
       typescript({ tsconfig: './tsconfig.json' }),
+
       postcss({
-        extract: false,
-        inject: (cssVariableName) =>
-          `import styleInject from 'style-inject';\nstyleInject(${cssVariableName});`,
+        extract: true,
         modules: true,
         sourceMap: false,
       }),
+
       image(),
-      alias({
-        entries: [{ find: '@/assets', replacement: 'src/assets' }],
-      }),
     ],
   },
 ];

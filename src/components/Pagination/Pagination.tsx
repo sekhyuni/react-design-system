@@ -18,13 +18,13 @@ interface Props {
   lengthOfPage?: number;
 }
 
-export default function Pagination({
+const Pagination = ({
   page,
   setPage,
   total,
   limit,
   lengthOfPage = 5,
-}: Props) {
+}: Props) => {
   const countOfAllPages = Math.ceil(total / limit);
 
   const [pageStartIdx, setPageStartIdx] = useState(1);
@@ -94,4 +94,6 @@ export default function Pagination({
       )}
     </nav>
   );
-}
+};
+
+export default Pagination;
