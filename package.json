@@ -1,11 +1,10 @@
 {
   "name": "@sekhyuni/react-design-system",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "react design system",
   "type": "module",
-  "main": "dist/index.cjs.js",
+  "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "browser": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/sekhyuni/react-design-system.git",
   "author": "Seokhyun (Asher) Kim",
