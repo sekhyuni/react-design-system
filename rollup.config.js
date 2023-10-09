@@ -29,22 +29,14 @@ const config = [
     input: './src/index.ts',
     output: [
       {
+        file: pkg.main,
         format: 'cjs',
         globals,
-        dir: 'dist',
-        preserveModules: true,
-        preserveModulesRoot: 'src',
       },
       {
         file: pkg.module,
         format: 'es',
         globals,
-      },
-      {
-        file: pkg.browser,
-        format: 'umd',
-        globals,
-        name: pkg.name,
       },
     ],
     external,
