@@ -30,6 +30,7 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "normalize.css": "^8.0.1",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
     "rollup": "^4.0.2",
